@@ -25,9 +25,8 @@ class FindDuplicates extends Command
     {
         /** @var DuplicateService $duplicateService */
         $duplicateService = GeneralUtility::makeInstance(DuplicateService::class);
-        $duplicates = $duplicateService->findDuplicates($input->getOption('includeMissing'));
 
-        if ($duplicates) {
+        if ($duplicates = $duplicateService->findDuplicates($input->getOption('includeMissing'))) {
             $output->writeln('storage;path;is missing');
 
             foreach ($duplicates as $hashGroup) {
@@ -42,7 +41,8 @@ class FindDuplicates extends Command
                 }
                 $output->writeln('');
             }
-            return 0;
         }
+
+        return 0;
     }
 }
