@@ -34,15 +34,22 @@ class SysFileRepository
     /**
      * Find all sha1 hashes with multiple records
      *
+     * @param bool $includeMissing
      * @return array
      * @throws DBALException
      */
-    public function findMultipleFileHashes(): array
+    public function findMultipleFileHashes(bool $includeMissing = false): array
     {
         $hashes = [];
 
+        if($includeMissing) {
+            $where = '';
+        } else {
+            $where = ' WHERE missing=0 ';
+        }
+
         /** @var Statement $stmt */
-        $stmt = $this->getConnection()->query('SELECT sha1, count(uid) as cnt FROM sys_file GROUP BY sha1 ORDER BY cnt DESC ');
+        $stmt = $this->getConnection()->query('SELECT sha1, count(uid) as cnt FROM sys_file ' . $where . ' GROUP BY sha1 ORDER BY cnt DESC');
         while ($row = $stmt->fetch(FetchMode::ASSOCIATIVE)) {
             if ($row['cnt'] > 1) {
                 $hashes[] = $row['sha1'];

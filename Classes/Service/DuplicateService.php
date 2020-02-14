@@ -37,7 +37,7 @@ class DuplicateService
     {
         $duplicates = [];
 
-        foreach ($this->sysFileRepository->findMultipleFileHashes() as $hash) {
+        foreach ($this->sysFileRepository->findMultipleFileHashes($includeMissing) as $hash) {
             if ($files = $this->sysFileRepository->findBySha1($hash, $includeMissing)) {
                 foreach ($files as $file) {
                     $duplicates[$hash][] = $this->resourceFactory->getFileObject($file['uid'], $file);
