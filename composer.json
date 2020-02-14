@@ -1,0 +1,19 @@
+{
+	"name": "koehnlein/falduplicates",
+	"type": "typo3-cms-extension",
+	"description": "Manage FAL duplicates",
+	"authors": [
+		{
+			"name": "Albrecht Köhnlein",
+			"role": "Developer"
+		}
+	],
+	"require": {
+		"typo3/cms-core": "^9.5"
+	},
+	"autoload": {
+		"psr-4": {
+			"Koehnlein\\Falduplicates\\": "Classes"
+		}
+	}
+}
