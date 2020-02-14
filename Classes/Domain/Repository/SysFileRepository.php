@@ -42,7 +42,7 @@ class SysFileRepository
     {
         $hashes = [];
 
-        if($includeMissing) {
+        if ($includeMissing) {
             $where = '';
         } else {
             $where = ' WHERE missing=0 ';
