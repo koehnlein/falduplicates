@@ -22,7 +22,7 @@ class DuplicateService
 
     public function __construct()
     {
-        $this->resourceFactory = ResourceFactory::getInstance();
+        $this->resourceFactory = GeneralUtility::makeInstance(\TYPO3\CMS\Core\Resource\ResourceFactory::class);
         $this->sysFileRepository = GeneralUtility::makeInstance(SysFileRepository::class);
     }
 

@@ -1,7 +1,9 @@
 <?php
 
+use Koehnlein\Falduplicates\Command\FindDuplicates;
+
 return [
     'falduplicates:find' => [
-        'class' => \Koehnlein\Falduplicates\Command\FindDuplicates::class
+        'class' => FindDuplicates::class
     ],
 ];
