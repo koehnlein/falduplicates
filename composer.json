@@ -2,6 +2,7 @@
 	"name": "koehnlein/falduplicates",
 	"type": "typo3-cms-extension",
 	"description": "Manage FAL duplicates",
+	"license": "GPL-2.0-or-later",
 	"authors": [
 		{
 			"name": "Albrecht Köhnlein",
