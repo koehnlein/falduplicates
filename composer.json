@@ -1,8 +1,8 @@
 {
 	"name": "koehnlein/falduplicates",
-	"type": "typo3-cms-extension",
 	"description": "Manage FAL duplicates",
 	"license": "GPL-2.0-or-later",
+	"type": "typo3-cms-extension",
 	"version": "0.1.0",
 	"authors": [
 		{
@@ -13,14 +13,14 @@
 	"require": {
 		"typo3/cms-core": "^10.4"
 	},
-	"extra": {
-		"typo3/cms": {
-			"extension-key": "falduplicates"
-		}
-	},
 	"autoload": {
 		"psr-4": {
 			"Koehnlein\\Falduplicates\\": "Classes"
+		}
+	},
+	"extra": {
+		"typo3/cms": {
+			"extension-key": "falduplicates"
 		}
 	}
 }
