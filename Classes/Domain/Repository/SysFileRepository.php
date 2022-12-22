@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Koehnlein\Falduplicates\Domain\Repository;
 
 use Doctrine\DBAL\DBALException;
-use Doctrine\DBAL\ForwardCompatibility\Result;
+use Doctrine\DBAL\Result;
 use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Database\Query\QueryBuilder;
@@ -48,8 +48,7 @@ class SysFileRepository
             $where = ' WHERE missing=0 ';
         }
 
-        /** @var Result<mixed> $stmt */
-        $stmt = $this->getConnection()->query('SELECT sha1, count(uid) as cnt FROM sys_file ' . $where . ' GROUP BY sha1 ORDER BY cnt DESC');
+        $stmt = $this->getConnection()->executeQuery('SELECT sha1, count(uid) as cnt FROM sys_file ' . $where . ' GROUP BY sha1 ORDER BY cnt DESC');
         while ($row = $stmt->fetchAssociative()) {
             if ($row['cnt'] > 1) {
                 $hashes[] = $row['sha1'];
@@ -83,6 +82,6 @@ class SysFileRepository
             );
         }
 
-        return $queryBuilder->execute()->fetchAll();
+        return $queryBuilder->executeQuery()->fetchAllAssociative();
     }
 }
