@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Koehnlein\Falduplicates\Service;
 
+use Doctrine\DBAL\DBALException;
+use TYPO3\CMS\Core\Resource\Exception\FileDoesNotExistException;
 use Koehnlein\Falduplicates\Domain\Repository\SysFileRepository;
 use TYPO3\CMS\Core\Resource\ResourceFactory;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -31,8 +33,8 @@ class DuplicateService
      *
      * @param bool $includeMissing
      * @return array
-     * @throws \Doctrine\DBAL\DBALException
-     * @throws \TYPO3\CMS\Core\Resource\Exception\FileDoesNotExistException
+     * @throws DBALException
+     * @throws FileDoesNotExistException
      */
     public function findDuplicates($includeMissing = false): array
     {
