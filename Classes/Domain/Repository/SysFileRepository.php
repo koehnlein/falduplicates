@@ -34,7 +34,6 @@ class SysFileRepository
     /**
      * Find all sha1 hashes with multiple records
      *
-     * @param bool $includeMissing
      * @return array
      * @throws DBALException
      */
@@ -64,7 +63,6 @@ class SysFileRepository
      * Find all file records by sha1 hash
      *
      * @param string $sha1
-     * @param bool $includeMissing
      * @return array
      */
     public function findBySha1($sha1, bool $includeMissing = false)

@@ -26,6 +26,7 @@ class FindDuplicates extends Command
     {
         /** @var DuplicateService $duplicateService */
         $duplicateService = GeneralUtility::makeInstance(DuplicateService::class);
+        $duplicateService->setOutput($output);
 
         if ($duplicates = $duplicateService->findDuplicates($input->getOption('includeMissing'))) {
             $output->writeln('storage;path;is missing');
