@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace Koehnlein\Falduplicates\Domain\Repository;
 
-use Doctrine\DBAL\DBALException;
-use Doctrine\DBAL\Result;
+use Doctrine\DBAL\Exception;
 use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Database\Query\QueryBuilder;
@@ -35,7 +34,7 @@ class SysFileRepository
      * Find all sha1 hashes with multiple records
      *
      * @return array
-     * @throws DBALException
+     * @throws Exception
      */
     public function findMultipleFileHashes(bool $includeMissing = false): array
     {
