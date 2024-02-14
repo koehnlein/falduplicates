@@ -34,7 +34,7 @@ class DuplicateService implements LoggerAwareInterface
         $this->sysFileRepository = GeneralUtility::makeInstance(SysFileRepository::class);
     }
 
-    public function setOutput(OutputInterface $output)
+    public function setOutput(OutputInterface $output): void
     {
         $this->output = $output;
     }
@@ -55,7 +55,7 @@ class DuplicateService implements LoggerAwareInterface
                 foreach ($files as $file) {
                     try {
                         $duplicates[$hash][] = $this->resourceFactory->getFileObject($file['uid'], $file);
-                    } catch (\TypeError) {
+                    } catch (\TypeError) { // @phpstan-ignore-line
                         $message = sprintf('Error for file uid %s (%s) in storage %s', $file['uid'], $file['identifier'], $file['storage']);
                         $this->logger?->error($message, $file);
                         $this->output?->writeln("<error>$message</error>");
