@@ -29,16 +29,17 @@ class FindDuplicates extends Command
         $duplicateService->setOutput($output);
 
         if ($duplicates = $duplicateService->findDuplicates($input->getOption('includeMissing'))) {
-            $output->writeln('storage;path;is missing');
+            $output->writeln('storage;path;is missing;hash');
 
             foreach ($duplicates as $hashGroup) {
                 /** @var File $file */
                 foreach ($hashGroup as $file) {
                     $output->writeln(sprintf(
-                        '%s;%s;%s',
+                        '%s;%s;%s;%s',
                         $file->getStorage()->getName(),
                         $file->getIdentifier(),
-                        $file->getProperty('missing')
+                        $file->getProperty('missing'),
+                        $file->getSha1()
                     ));
                 }
                 $output->writeln('');
