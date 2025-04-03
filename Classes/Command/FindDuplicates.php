@@ -22,7 +22,7 @@ class FindDuplicates extends Command
             ->addOption('includeMissing', null, InputOption::VALUE_NONE, 'Include records marked as missing');
     }
 
-    public function execute(InputInterface $input, OutputInterface $output)
+    public function execute(InputInterface $input, OutputInterface $output): int
     {
         /** @var DuplicateService $duplicateService */
         $duplicateService = GeneralUtility::makeInstance(DuplicateService::class);

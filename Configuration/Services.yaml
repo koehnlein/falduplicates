@@ -11,3 +11,4 @@ services:
     tags:
       - name: 'console.command'
         command: 'falduplicates:find'
+        description: 'Find and list FAL duplications'
