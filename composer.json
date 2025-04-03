@@ -3,7 +3,6 @@
 	"description": "Manage FAL duplicates",
 	"license": "GPL-2.0-or-later",
 	"type": "typo3-cms-extension",
-	"version": "0.2.0",
 	"authors": [
 		{
 			"name": "Albrecht Köhnlein",
@@ -11,7 +10,8 @@
 		}
 	],
 	"require": {
-		"typo3/cms-core": "^10.4 || ^11.5 || ^12.4"
+		"symfony/console": "^7.0",
+		"typo3/cms-core": "^12.4 || ^13.4"
 	},
 	"autoload": {
 		"psr-4": {
